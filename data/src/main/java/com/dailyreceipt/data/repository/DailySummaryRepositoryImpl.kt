@@ -16,8 +16,7 @@ import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class DailySummaryRepositoryImpl @Inject constructor(
+class DailySummaryRepositoryImpl(
     private val appUsageDataSource: AppUsageDataSource,
     private val notificationDataSource: NotificationDataSource,
     private val healthDataSource: HealthDataSource,
