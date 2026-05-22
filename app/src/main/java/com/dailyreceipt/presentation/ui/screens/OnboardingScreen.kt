@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dailyreceipt.presentation.theme.AccentBrown
 import com.dailyreceipt.presentation.theme.CreamBackground
+import com.dailyreceipt.presentation.util.PermissionManager
 import kotlinx.coroutines.launch
 
 /**
@@ -37,7 +38,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun OnboardingScreen(
     onComplete: () -> Unit,
-    onRequestPermission: (String) -> Unit
+    onRequestPermission: (PermissionManager.PermissionType) -> Unit
 ) {
     val pagerState = rememberPagerState(pageCount = { 4 })
     val scope = rememberCoroutineScope()
@@ -242,7 +243,7 @@ private fun PermissionPage(onRequestPermission: (String) -> Unit) {
             title = "앱 사용량 액세스",
             description = "하루 동안 앱을 얼마나 사용했는지",
             required = true,
-            onClick = { onRequestPermission("usage") }
+            onClick = { onRequestPermission(PermissionManager.PermissionType.USAGE_STATS) }
         )
         Spacer(modifier = Modifier.height(12.dp))
         PermissionItem(
@@ -250,7 +251,7 @@ private fun PermissionPage(onRequestPermission: (String) -> Unit) {
             title = "알림 접근",
             description = "수신한 알림을 읽어서 정리",
             required = true,
-            onClick = { onRequestPermission("notification") }
+            onClick = { onRequestPermission(PermissionManager.PermissionType.NOTIFICATION) }
         )
         Spacer(modifier = Modifier.height(12.dp))
         PermissionItem(
@@ -258,7 +259,7 @@ private fun PermissionPage(onRequestPermission: (String) -> Unit) {
             title = "신체 활동",
             description = "걸음 수, 운동 데이터 (Google Fit)",
             required = false,
-            onClick = { onRequestPermission("activity") }
+            onClick = { onRequestPermission(PermissionManager.PermissionType.ACTIVITY) }
         )
         Spacer(modifier = Modifier.height(12.dp))
         PermissionItem(
@@ -266,7 +267,7 @@ private fun PermissionPage(onRequestPermission: (String) -> Unit) {
             title = "캘린더",
             description = "일정 정보 조회",
             required = false,
-            onClick = { onRequestPermission("calendar") }
+            onClick = { onRequestPermission(PermissionManager.PermissionType.CALENDAR) }
         )
     }
 }

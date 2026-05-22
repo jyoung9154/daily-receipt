@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
 import android.os.Environment
-import com.dailyreceipt.domain.model.DailyReceipt
+import com.dailyreceipt.presentation.ui.model.DailyReceipt
 import java.io.File
 import java.io.FileOutputStream
 import java.text.NumberFormat

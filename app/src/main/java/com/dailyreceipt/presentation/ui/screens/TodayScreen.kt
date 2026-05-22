@@ -20,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.dailyreceipt.domain.model.*
+import com.dailyreceipt.presentation.ui.model.*
 import com.dailyreceipt.presentation.ui.components.ReceiptCard
 import com.dailyreceipt.presentation.theme.*
 import java.text.NumberFormat
