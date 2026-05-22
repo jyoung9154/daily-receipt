@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.dailyreceipt.data.local.AppDatabase
 import com.dailyreceipt.data.local.dao.*
+import com.dailyreceipt.data.repository.DailySummaryRepositoryImpl
+import com.dailyreceipt.domain.repository.DailySummaryRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,4 +53,10 @@ object DatabaseModule {
     fun provideFinanceTransactionDao(database: AppDatabase): FinanceTransactionDao {
         return database.financeTransactionDao()
     }
+
+    @Provides
+    @Singleton
+    fun provideDailySummaryRepository(
+        impl: DailySummaryRepositoryImpl
+    ): DailySummaryRepository = impl
 }
