@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#6200EE</color>
+    <string name="app_name">Daily Receipt</string>
+    <style name="Theme.DailyReceipt" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>
