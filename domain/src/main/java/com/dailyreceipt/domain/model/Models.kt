@@ -14,8 +14,6 @@ data class DailySummary(
     val calendarEvents: List<CalendarEvent> = emptyList(),
     val financeTransactions: List<FinanceTransaction> = emptyList(),
     val totalScreenTimeMinutes: Long = 0,
-    val totalNotifications: Int = 0,
-    val totalCalendarEvents: Int = 0,
     val createdAt: LocalDateTime = LocalDateTime.now()
 )
 

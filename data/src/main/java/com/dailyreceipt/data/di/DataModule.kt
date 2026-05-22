@@ -2,12 +2,8 @@ package com.dailyreceipt.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.dailyreceipt.data.calendar.CalendarDataSource
-import com.dailyreceipt.data.health.HealthDataSource
 import com.dailyreceipt.data.local.AppDatabase
 import com.dailyreceipt.data.local.dao.*
-import com.dailyreceipt.data.notification.NotificationDataSource
-import com.dailyreceipt.data.usage.AppUsageDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
