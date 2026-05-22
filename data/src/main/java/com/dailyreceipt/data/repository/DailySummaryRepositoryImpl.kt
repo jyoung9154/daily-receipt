@@ -43,7 +43,7 @@ class DailySummaryRepositoryImpl @Inject constructor(
 
         val notifications = notificationDataSource.getNotificationsForDate(dateTime)
         val healthData = healthDataSource.getHealthDataForDate(dateTime)
-        val calendarEvents = calendarDataSource.getEventsForDate(dateTime)
+        val calendarEvents = calendarDataSource.getEventsForDay(dateTime)
         val financeTransactions = financeTransactionDao.getByDateSync(dateStr).map { it.toDomain() }
 
         val totalScreenTime = usageStats.sumOf { it.usageTimeMinutes }
