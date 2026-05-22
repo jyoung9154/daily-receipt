@@ -110,10 +110,7 @@ class NotificationListenerServiceImpl : NotificationListenerService() {
  * Hilt EntryPoint for accessing NotificationListenerServiceImpl.
  */
 @dagger.hilt.EntryPoint
-@dagger.hilt.InstallIn(
-    dagger.hilt.components.SingletonComponent::class,
-    scope = dagger.hilt.android.components.ServiceComponent::class
-)
+@dagger.hilt.InstallIn(dagger.hilt.components.SingletonComponent::class)
 interface NotificationListenerEntryPoint {
     fun notificationDataSource(): NotificationDataSource
 }

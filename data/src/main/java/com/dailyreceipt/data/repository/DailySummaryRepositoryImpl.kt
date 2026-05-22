@@ -83,7 +83,9 @@ class DailySummaryRepositoryImpl @Inject constructor(
             healthData = healthData,
             calendarEvents = calendarEvents,
             financeTransactions = financeTransactions,
-            totalScreenTimeMinutes = totalScreenTime
+            totalScreenTimeMinutes = totalScreenTime,
+            totalNotifications = notifications.size,
+            totalCalendarEvents = calendarEvents.size
         )
     }
 
@@ -108,7 +110,9 @@ class DailySummaryRepositoryImpl @Inject constructor(
             ),
             calendarEvents = calendarEvents,
             financeTransactions = financeTransactions,
-            totalScreenTimeMinutes = summaryEntity.totalScreenTimeMinutes
+            totalScreenTimeMinutes = summaryEntity.totalScreenTimeMinutes,
+            totalNotifications = summaryEntity.totalNotifications,
+            totalCalendarEvents = summaryEntity.totalCalendarEvents
         )
     }
 

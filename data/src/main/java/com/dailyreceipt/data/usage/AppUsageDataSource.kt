@@ -110,8 +110,8 @@ class AppUsageDataSource @Inject constructor(
     private fun getAppCategory(appInfo: ApplicationInfo): String {
         return when {
             isSystemApp(appInfo) -> "System"
-            hasCategory(appInfo, android.content.Intent.CATEGORY_LAUNCHER) -> "Launcher"
-            hasCategory(appInfo, android.content.Intent.CATEGORY_GAME) -> "Game"
+            hasCategory(appInfo, "android.intent.category.LAUNCHER") -> "Launcher"
+            hasCategory(appInfo, "android.intent.category.GAME") -> "Game"
             isCommunicationApp(appInfo.packageName) -> "Communication"
             isSocialMediaApp(appInfo.packageName) -> "Social Media"
             isMediaApp(appInfo.packageName) -> "Media"
