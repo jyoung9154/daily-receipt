@@ -32,8 +32,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
     implementation("javax.inject:javax.inject:1")
-    implementation("com.google.dagger:hilt-android:2.44")
-    ksp("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.50")
+    ksp("com.google.dagger:hilt-android-compiler:2.50")
     // Google Fit 의존성 - ARM64 환경 빌드 문제로 일시 주석
     // implementation("com.google.android.gms:play-services-fitness:21.1.0")
     // implementation("com.google.android.gms:play-services-auth:20.7.0")
