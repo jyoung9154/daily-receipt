@@ -7,27 +7,13 @@ import com.dailyreceipt.data.health.HealthDataSource
 import com.dailyreceipt.data.local.AppDatabase
 import com.dailyreceipt.data.local.dao.*
 import com.dailyreceipt.data.notification.NotificationDataSource
-import com.dailyreceipt.data.repository.DailySummaryRepositoryImpl
 import com.dailyreceipt.data.usage.AppUsageDataSource
-import com.dailyreceipt.domain.repository.DailySummaryRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
-
-    @Binds
-    @Singleton
-    abstract fun bindDailySummaryRepository(
-        impl: DailySummaryRepositoryImpl
-    ): DailySummaryRepository
-}
 
 @Module
 @InstallIn(SingletonComponent::class)
