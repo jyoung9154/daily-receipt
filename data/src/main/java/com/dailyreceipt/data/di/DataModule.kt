@@ -10,12 +10,24 @@ import com.dailyreceipt.data.notification.NotificationDataSource
 import com.dailyreceipt.data.repository.DailySummaryRepositoryImpl
 import com.dailyreceipt.data.usage.AppUsageDataSource
 import com.dailyreceipt.domain.repository.DailySummaryRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
+
+    @Binds
+    @Singleton
+    abstract fun bindDailySummaryRepository(
+        impl: DailySummaryRepositoryImpl
+    ): DailySummaryRepository
+}
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -56,31 +68,5 @@ object DatabaseModule {
     @Provides
     fun provideFinanceTransactionDao(database: AppDatabase): FinanceTransactionDao {
         return database.financeTransactionDao()
-    }
-
-    @Provides
-    @Singleton
-    fun provideDailySummaryRepository(
-        appUsageDataSource: AppUsageDataSource,
-        notificationDataSource: NotificationDataSource,
-        healthDataSource: HealthDataSource,
-        calendarDataSource: CalendarDataSource,
-        appUsageDao: AppUsageDao,
-        notificationDao: NotificationDao,
-        calendarEventDao: CalendarEventDao,
-        financeTransactionDao: FinanceTransactionDao,
-        dailySummaryDao: DailySummaryDao
-    ): DailySummaryRepository {
-        return DailySummaryRepositoryImpl(
-            appUsageDataSource = appUsageDataSource,
-            notificationDataSource = notificationDataSource,
-            healthDataSource = healthDataSource,
-            calendarDataSource = calendarDataSource,
-            appUsageDao = appUsageDao,
-            notificationDao = notificationDao,
-            calendarEventDao = calendarEventDao,
-            financeTransactionDao = financeTransactionDao,
-            dailySummaryDao = dailySummaryDao
-        )
     }
 }
