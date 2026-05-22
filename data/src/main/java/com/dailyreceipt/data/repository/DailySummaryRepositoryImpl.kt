@@ -22,11 +22,11 @@ class DailySummaryRepositoryImpl @Inject constructor(
     private val notificationDataSource: NotificationDataSource,
     private val healthDataSource: HealthDataSource,
     private val calendarDataSource: CalendarDataSource,
-    private val dailySummaryDao: DailySummaryDao,
     private val appUsageDao: AppUsageDao,
     private val notificationDao: NotificationDao,
     private val calendarEventDao: CalendarEventDao,
-    private val financeTransactionDao: FinanceTransactionDao
+    private val financeTransactionDao: FinanceTransactionDao,
+    private val dailySummaryDao: DailySummaryDao
 ) : DailySummaryRepository {
 
     private val dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE
@@ -43,7 +43,7 @@ class DailySummaryRepositoryImpl @Inject constructor(
 
         val notifications = notificationDataSource.getNotificationsForDate(dateTime)
         val healthData = healthDataSource.getHealthDataForDate(dateTime)
-        val calendarEvents = calendarEventDao.getByDateSync(dateStr).map { it.toDomain() }
+        val calendarEvents = calendarDataSource.getEventsForDate(dateTime)
         val financeTransactions = financeTransactionDao.getByDateSync(dateStr).map { it.toDomain() }
 
         val totalScreenTime = usageStats.sumOf { it.usageTimeMinutes }

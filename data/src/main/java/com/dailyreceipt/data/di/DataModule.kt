@@ -2,11 +2,13 @@ package com.dailyreceipt.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.dailyreceipt.data.health.HealthDataSource
 import com.dailyreceipt.data.local.AppDatabase
 import com.dailyreceipt.data.local.dao.*
+import com.dailyreceipt.data.notification.NotificationDataSource
 import com.dailyreceipt.data.repository.DailySummaryRepositoryImpl
+import com.dailyreceipt.data.usage.AppUsageDataSource
 import com.dailyreceipt.domain.repository.DailySummaryRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -54,15 +56,30 @@ object DatabaseModule {
     fun provideFinanceTransactionDao(database: AppDatabase): FinanceTransactionDao {
         return database.financeTransactionDao()
     }
-}
 
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
-
-    @Binds
+    @Provides
     @Singleton
-    abstract fun bindDailySummaryRepository(
-        impl: DailySummaryRepositoryImpl
-    ): DailySummaryRepository
+    fun provideDailySummaryRepository(
+        appUsageDataSource: AppUsageDataSource,
+        notificationDataSource: NotificationDataSource,
+        healthDataSource: HealthDataSource,
+        calendarDataSource: CalendarDataSource,
+        appUsageDao: AppUsageDao,
+        notificationDao: NotificationDao,
+        calendarEventDao: CalendarEventDao,
+        financeTransactionDao: FinanceTransactionDao,
+        dailySummaryDao: DailySummaryDao
+    ): DailySummaryRepository {
+        return DailySummaryRepositoryImpl(
+            appUsageDataSource = appUsageDataSource,
+            notificationDataSource = notificationDataSource,
+            healthDataSource = healthDataSource,
+            calendarDataSource = calendarDataSource,
+            appUsageDao = appUsageDao,
+            notificationDao = notificationDao,
+            calendarEventDao = calendarEventDao,
+            financeTransactionDao = financeTransactionDao,
+            dailySummaryDao = dailySummaryDao
+        )
+    }
 }
