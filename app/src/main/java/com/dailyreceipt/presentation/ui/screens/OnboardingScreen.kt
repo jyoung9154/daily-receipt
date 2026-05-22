@@ -219,7 +219,7 @@ private fun DataItem(icon: ImageVector, title: String, description: String) {
 }
 
 @Composable
-private fun PermissionPage(onRequestPermission: (String) -> Unit) {
+private fun PermissionPage(onRequestPermission: (PermissionManager.PermissionType) -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
